@@ -1,6 +1,7 @@
 package com.example.lifecycleexample
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -14,15 +15,15 @@ import com.example.lifecycleexample.databinding.FragmentSecondBinding
 class SecondFragment : Fragment() {
 
     private var _binding: FragmentSecondBinding? = null
+    private val logTag = "fragmentlifecycle"
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        Log.d(logTag, "SecondFragment onCreateView")
         _binding = FragmentSecondBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -30,12 +31,15 @@ class SecondFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        Log.d(logTag, "SecondFragment onViewCreated")
+
         binding.buttonSecond.setOnClickListener {
             findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
         }
     }
 
     override fun onDestroyView() {
+        Log.d(logTag, "SecondFragment onDestroyView")
         super.onDestroyView()
         _binding = null
     }

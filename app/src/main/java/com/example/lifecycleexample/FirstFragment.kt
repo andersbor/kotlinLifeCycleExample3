@@ -18,14 +18,14 @@ class FirstFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        Log.d(logTag, "Fragment onCreateView")
+        Log.d(logTag, "FirstFragment onCreateView")
         _binding = FragmentFirstBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Log.d(logTag, "Fragment onViewCreated")
+        Log.d(logTag, "FirstFragment onViewCreated")
         binding.buttonFirst.setOnClickListener {
             findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
         }
@@ -33,7 +33,7 @@ class FirstFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        Log.d(logTag, "Fragment onDestroyView")
+        Log.d(logTag, "FirstFragment onDestroyView")
         _binding = null
     }
 }
